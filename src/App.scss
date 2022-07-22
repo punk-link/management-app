@@ -1,0 +1,256 @@
+$breakpoint-mobile: 48em;
+$grid-gap: 1em;
+
+$background-color: #F6EBF4;
+$fill-color: #F6EBF4;
+$primary-color: #023B59;
+$secondary-color: #482673;
+$text-color: rgba(0, 0, 0, .87);
+
+@function to-rgba($color, $opacity: .25) {
+    @return rgba($color, $opacity)
+}
+
+.app-header {
+    align-items: center;
+    min-height: 3em;
+    background-color: $background-color;
+    z-index: 1000;
+
+    .manager-info {
+        .avatar {
+            margin: .5em;
+
+            @mixin circle($diameter) {
+                border-radius: 50%;
+                height: $diameter;
+                width: $diameter;
+            }
+
+            .circle {
+                @include circle(3em);
+                background-color: $secondary-color;
+            }
+
+            .img {
+                @include circle(3em);
+            }
+        }
+
+        .text-info {
+            justify-items: start;
+            padding: .5em 0;
+
+            @mixin text-positioning {
+                align-content: center;
+                display: grid;
+                color: $text-color;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .name {
+                @include text-positioning();
+                font-size: medium;
+                font-weight: bolder;
+                margin-bottom: -0.5em;
+            }
+
+            .position {
+                @include text-positioning();
+                font-size: small;
+            }
+        }
+    }
+}
+
+@mixin dynamic-grid-template($gap: $grid-gap) {
+    display: grid;
+    grid-gap: $gap;
+}
+
+@mixin dynamic-grid($column-number, $gap: $grid-gap) {
+    @include dynamic-grid-template($gap);
+    grid-template-columns: repeat($column-number, 1fr);  
+}
+
+@mixin dynamic-vertical-grid($column-number, $gap: $grid-gap) {
+    @include dynamic-grid-template($gap);
+    grid-template-rows: repeat($column-number, 1fr);  
+}
+
+.grid-3 {
+    @include dynamic-grid(3)
+}
+
+.grid-4 {
+    @include dynamic-grid(4)
+}
+
+.grid-12 {
+    @include dynamic-grid(12)
+}
+
+.height-1 {
+    grid-row: span 1;
+}
+
+.height-2 {
+    grid-row: span 2;
+}
+
+.height-3 {
+    grid-row: span 3;
+}
+
+.height-4 {
+    grid-row: span 4;
+}
+
+.logo {
+    color: $primary-color;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    text-align: end;
+}
+
+.shadowed {
+    filter: drop-shadow(.25em .25em .25em to-rgba($secondary-color));
+}
+
+.vertically-shadowed {
+    filter: drop-shadow(0 .25em .25em to-rgba($secondary-color));
+}
+
+.vertical-grid-2 {
+    @include dynamic-vertical-grid(2)
+}
+
+.vertical-grid-2-slim {
+    @include dynamic-vertical-grid(2, 0)
+}
+
+.vertical-grid-3 {
+    @include dynamic-vertical-grid(3)
+}
+  
+.width-1\/12 {
+    grid-column: span 1;
+}
+  
+.width-2\/12 {
+    grid-column: span 2;
+}
+  
+.width-3\/12 {
+    grid-column: span 3;
+}
+  
+.width-4\/12 {
+    grid-column: span 4;
+}
+  
+.width-5\/12 {
+    grid-column: span 5;
+}
+  
+.width-6\/12 {
+    grid-column: span 6;
+}
+  
+.width-7\/12 {
+    grid-column: span 7;
+}
+  
+.width-8\/12 {
+    grid-column: span 8;
+}
+  
+.width-9\/12 {
+    grid-column: span 9;
+}
+  
+.width-10\/12 {
+    grid-column: span 10;
+}
+  
+.width-11\/12 {
+    grid-column: span 11;
+}
+  
+.width-12\/12 {
+    grid-column: span 12;
+}
+  
+.width-1\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 1;
+    }
+}
+  
+.width-2\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 2;
+    }
+}
+  
+.width-3\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 3;
+    }
+}
+  
+.width-4\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 4;
+    }
+}
+  
+.width-5\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 5;
+    }
+}
+  
+.width-6\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 6;
+    }
+}
+  
+.width-7\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 7;
+    }
+}
+  
+.width-8\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 8;
+    }
+}
+  
+.width-9\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 9;
+    }
+}
+  
+.width-10\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 10;
+    }
+}
+  
+.width-11\/12m {
+    @media (min-width: $breakpoint-mobile) {
+      grid-column: span 11;
+    }
+}
+  
+.width-12\/12m {
+    @media (min-width: $breakpoint-mobile) {
+        grid-column: span 12;
+    }
+}
