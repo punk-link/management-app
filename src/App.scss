@@ -4,11 +4,21 @@ $grid-gap: 1em;
 $background-color: #F6EBF4;
 $fill-color: #F6EBF4;
 $primary-color: #023B59;
+$secondary-backround-color: #4CBFA6;
 $secondary-color: #482673;
 $text-color: rgba(0, 0, 0, .87);
 
 @function to-rgba($color, $opacity: .25) {
     @return rgba($color, $opacity)
+}
+
+#root {
+    background-color: $fill-color;    
+    color: $text-color;
+}
+
+.account {
+    justify-items: center;
 }
 
 .app-header {
@@ -18,7 +28,11 @@ $text-color: rgba(0, 0, 0, .87);
     z-index: 1000;
 
     .manager-info {
+        align-items: start;
+        margin-left: 1em;
+
         .avatar {
+            justify-self: center;
             margin: .5em;
 
             @mixin circle($diameter) {
@@ -44,7 +58,6 @@ $text-color: rgba(0, 0, 0, .87);
             @mixin text-positioning {
                 align-content: center;
                 display: grid;
-                color: $text-color;
                 text-overflow: ellipsis;
                 white-space: nowrap;
             }
@@ -53,7 +66,6 @@ $text-color: rgba(0, 0, 0, .87);
                 @include text-positioning();
                 font-size: medium;
                 font-weight: bolder;
-                margin-bottom: -0.5em;
             }
 
             .position {
@@ -63,6 +75,46 @@ $text-color: rgba(0, 0, 0, .87);
         }
     }
 }
+
+@mixin container-positioning {
+    justify-self: center;
+    padding: 3em;
+}
+
+.container {
+    @include container-positioning();
+    height: 100vh;    
+    justify-items: center;
+    max-width: 800px;
+}
+
+.secondary-container {
+    @include container-positioning();
+    background-color: $secondary-backround-color;
+    height: 100vh;
+}
+
+.logo {
+    align-self: end;
+    color: $primary-color;
+    font-family: 'Inter';
+    font-size: 3em;
+    font-style: normal;
+    font-weight: bold;
+    text-align: end;    
+    justify-self: end;
+    margin-right: 1em;
+}
+
+.shadowed {
+    filter: drop-shadow(.25em .25em .25em to-rgba($secondary-color));
+}
+
+.vertically-shadowed {
+    filter: drop-shadow(0 .25em .25em to-rgba($secondary-color));
+}
+
+// grid
 
 @mixin dynamic-grid-template($gap: $grid-gap) {
     display: grid;
@@ -87,6 +139,10 @@ $text-color: rgba(0, 0, 0, .87);
     @include dynamic-grid(4)
 }
 
+.grid-6 {
+    @include dynamic-grid(6)
+}
+
 .grid-12 {
     @include dynamic-grid(12)
 }
@@ -107,22 +163,6 @@ $text-color: rgba(0, 0, 0, .87);
     grid-row: span 4;
 }
 
-.logo {
-    color: $primary-color;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    text-align: end;
-}
-
-.shadowed {
-    filter: drop-shadow(.25em .25em .25em to-rgba($secondary-color));
-}
-
-.vertically-shadowed {
-    filter: drop-shadow(0 .25em .25em to-rgba($secondary-color));
-}
-
 .vertical-grid-2 {
     @include dynamic-vertical-grid(2)
 }
@@ -134,122 +174,126 @@ $text-color: rgba(0, 0, 0, .87);
 .vertical-grid-3 {
     @include dynamic-vertical-grid(3)
 }
+
+.vertical-grid-12 {
+    @include dynamic-vertical-grid(12)
+}
   
-.width-1\/12 {
+.width-1 {
     grid-column: span 1;
 }
   
-.width-2\/12 {
+.width-2 {
     grid-column: span 2;
 }
   
-.width-3\/12 {
+.width-3 {
     grid-column: span 3;
 }
   
-.width-4\/12 {
+.width-4 {
     grid-column: span 4;
 }
   
-.width-5\/12 {
+.width-5 {
     grid-column: span 5;
 }
   
-.width-6\/12 {
+.width-6 {
     grid-column: span 6;
 }
   
-.width-7\/12 {
+.width-7 {
     grid-column: span 7;
 }
   
-.width-8\/12 {
+.width-8 {
     grid-column: span 8;
 }
   
-.width-9\/12 {
+.width-9 {
     grid-column: span 9;
 }
   
-.width-10\/12 {
+.width-10 {
     grid-column: span 10;
 }
   
-.width-11\/12 {
+.width-11 {
     grid-column: span 11;
 }
   
-.width-12\/12 {
+.width-12 {
     grid-column: span 12;
 }
   
-.width-1\/12m {
+.width-1m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 1;
     }
 }
   
-.width-2\/12m {
+.width-2m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 2;
     }
 }
   
-.width-3\/12m {
+.width-3m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 3;
     }
 }
   
-.width-4\/12m {
+.width-4m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 4;
     }
 }
   
-.width-5\/12m {
+.width-5m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 5;
     }
 }
   
-.width-6\/12m {
+.width-6m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 6;
     }
 }
   
-.width-7\/12m {
+.width-7m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 7;
     }
 }
   
-.width-8\/12m {
+.width-8m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 8;
     }
 }
   
-.width-9\/12m {
+.width-9m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 9;
     }
 }
   
-.width-10\/12m {
+.width-10m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 10;
     }
 }
   
-.width-11\/12m {
+.width-11m {
     @media (min-width: $breakpoint-mobile) {
       grid-column: span 11;
     }
 }
   
-.width-12\/12m {
+.width-12m {
     @media (min-width: $breakpoint-mobile) {
         grid-column: span 12;
     }

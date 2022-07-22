@@ -2,7 +2,7 @@ import React from "react";
 
 const Logo = () => {
     return (
-        <div className="logo width-2/12">
+        <div className="logo width-2">
             punk.link
         </div>
     );

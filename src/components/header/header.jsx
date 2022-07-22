@@ -4,12 +4,10 @@ import Logo from "../common/logo";
 
 const Header = () => {
     return (
-        <div className="app-header width-12/12 vertically-shadowed grid-12">
-            <div className="filler width-1/12"></div>
+        <div className="app-header width-12 vertically-shadowed grid-12">
             <ManagerInfo />
-            <div className="filler width-4/12"></div>
+            <div className="filler width-7"></div>
             <Logo />
-            <div className="filler width-1/12"></div>
         </div>
     );
 }

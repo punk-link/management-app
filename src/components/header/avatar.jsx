@@ -2,24 +2,26 @@ import React from "react";
 
 function getDummy() {
     return (
-        <div className="circle"></div>
+        <div className="avatar">
+            <div className="circle"></div>
+        </div>
     );
 }
 
 function getAvatar(avatarUrl) {
     return (
-        <img className="img" src={avatarUrl} alt="avatar" />
+        <div className="avatar">
+            <img className="img" src={avatarUrl} alt="avatar" />
+        </div>
     );
 }
 
 const Avatar = ({avatarUrl}) => {
-    let content = avatarUrl ? getAvatar(avatarUrl) : getDummy();
-
-    return (
-        <div className="avatar">
-            {content}
-        </div>
-    );
+    // TODO: check avatarUrl
+    if (avatarUrl === undefined)
+        return getDummy();
+    
+    return getAvatar(avatarUrl);
 }
 
 export default Avatar;
