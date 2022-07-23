@@ -11,7 +11,7 @@ const ManagerInfo = () => {
     return (
         <div className="manager-info width-3 grid-6">
             <Avatar className="width-2" avatarUrl={managerInfo.avatarUrl} />
-            <div className="text-info width-4 vertical-grid-2-slim">
+            <div className="text-info width-4">
                 <div className="name height-1">
                     {managerInfo.name}
                 </div>

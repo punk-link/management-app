@@ -11,7 +11,7 @@ function getDummy() {
 function getAvatar(avatarUrl) {
     return (
         <div className="avatar">
-            <img className="img" src={avatarUrl} alt="avatar" />
+            <img className="avatar-img" src={avatarUrl} alt="avatar" />
         </div>
     );
 }
