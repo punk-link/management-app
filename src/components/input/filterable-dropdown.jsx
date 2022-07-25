@@ -1,15 +1,13 @@
 import React from "react";
-import List from "./list";
+import List from "../common/list";
 import TextInput from "./text-input";
 
-const context = React.createContext()
-
-const FilterableDropdown = ({placeholder, children}) => {
+const FilterableDropdown = ({placeholder, children, getValueFunc}) => {
     placeholder = placeholder ? placeholder : "";
 
     return (
-        <div className="dropdown">
-            <TextInput placeholder={placeholder} />
+        <div className="filterable-dropdown">
+            <TextInput placeholder={placeholder} getValueFunc={getValueFunc}/>
             <List>
                 {children}
             </List>

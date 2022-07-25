@@ -13,6 +13,37 @@ $light-text-color: rgba(0, 0, 0, .50);
     @return rgba($color, $opacity)
 }
 
+@mixin screen-container-positioning {
+    justify-self: center;
+    padding: 3em;
+}
+
+@mixin default-image {
+    img {
+        height: 2em;
+    }
+}
+
+@mixin default-list {
+    ul {
+        background-color: white;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            padding: .5em;
+
+            @include default-image();
+        }
+
+        li:hover {
+            background-color: to-rgba($secondary-color);
+            cursor: pointer;
+        }
+    }
+}
+
 body {
     background-color: $fill-color;    
     color: $text-color;
@@ -21,22 +52,13 @@ body {
 
 .account {
     justify-items: center;
-}
 
-.dropdown {
-    ul {
-        background-color: white;
-        border: 1px solid to-rgba($secondary-color);
-        list-style: none;
-
-        li {
-            margin: .5em;
+    .filterable-dropdown {
+        ul {
+            border: 1px solid to-rgba($secondary-color);
         }
-
-        li:hover {
-            background-color: to-rgba($secondary-color);
-            cursor: pointer;
-        }
+    
+        @include default-list();
     }
 }
 
@@ -95,13 +117,52 @@ body {
     }
 }
 
-.artist-suggestion {
-    img {
-        height: 2em;
+.artist-releases-container {
+    margin: 1em 0 0;
+    @include default-list();
+
+    .title {
+        background-color: $secondary-backround-color;
+        color: $background-color;
+        cursor: pointer;
+        font-weight: bolder;
+        padding: 1em .5em;
+
+        &:hover {
+            background-color: to-rgba($secondary-backround-color, .75);
+        }
+
+        span {
+            font-weight: lighter;
+            font-size: small;
+            padding-left: 1em;
+        }
     }
 
+    .name {
+        padding-left: 1em;
+    }
+
+    .metadata {
+        color: $secondary-backround-color;
+        font-size: smaller;
+        padding-left: 1em;
+    }
+
+    .service-number {
+        color: $secondary-backround-color;
+        font-size: smaller;
+        text-overflow: ellipsis;
+    }
+}
+
+.artist-suggestion {
     span:nth-child(2) {
         padding-left: 1em;
+
+        span {
+            font-weight: bolder;
+        }
     }
 
     span:nth-child(3) {
@@ -109,18 +170,6 @@ body {
         font-size: small;
         padding-left: 1em;
     }
-}
-
-@mixin container-positioning {
-    justify-self: center;
-    padding: 3em;
-}
-
-.container {
-    @include container-positioning();
-    height: 100vh;    
-    justify-items: center;
-    max-width: 800px;
 }
 
 .logo {
@@ -135,15 +184,22 @@ body {
     margin-right: 1em;
 }
 
-.secondary-container {
-    @include container-positioning();
-    background-color: $secondary-backround-color;
-    height: 100vh;
+.screen-container {
+    @include screen-container-positioning();
+    height: 100vh;    
+    justify-items: center;
+    max-width: 800px;
 }
 
 .secondary-prompt {
     color: $light-text-color;
     margin: 2em;
+}
+
+.secondary-screen-container {
+    @include screen-container-positioning();
+    background-color: $secondary-backround-color;
+    height: 100vh;
 }
 
 .shadowed {

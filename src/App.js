@@ -1,17 +1,17 @@
 import './App.scss';
 import Grid from './components/common/grid'
 import Header from './components/header/header';
-import Container from './components/common/container';
+import ScreenContainer from './components/common/screen-container';
 import Account from './components/account/account';
-//import SecondaryContainer from './components/common/secondary-container';
+//import SecondaryScreenContainer from './components/common/secondary-screen-container';
 
 function App() {
   return (
     <Grid>
       <Header />
-      <Container>
+      <ScreenContainer>
         <Account />
-      </Container>
+      </ScreenContainer>
     </Grid>
   );
 }

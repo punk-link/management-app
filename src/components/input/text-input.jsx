@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-const TextInput = ({placeholder}) => {
-    let [text, setText] = useState("");
-
-    let onChange = (e) => {
-        setText(e.target.value);
-
-    }
-
+const TextInput = ({placeholder, getValueFunc}) => {
     return (
-        <input className="text-input" type="text" placeholder={placeholder} onChange={onChange}/>
+        <input className="text-input" type="text" placeholder={placeholder} onChange={(e) => {getValueFunc(e.target.value)}}/>
     );
 }
 
