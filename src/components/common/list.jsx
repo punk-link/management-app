@@ -5,7 +5,7 @@ const List = ({children}) => {
         return null;
 
     return (
-        <ul className="shadowed">
+        <ul>
             {children}
         </ul>
     );

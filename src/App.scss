@@ -52,6 +52,7 @@ body {
 
 .account {
     justify-items: center;
+    padding-bottom: 3em;
 
     .filterable-dropdown {
         ul {
@@ -117,45 +118,6 @@ body {
     }
 }
 
-.artist-releases-container {
-    margin: 1em 0 0;
-    @include default-list();
-
-    .title {
-        background-color: $secondary-backround-color;
-        color: $background-color;
-        cursor: pointer;
-        font-weight: bolder;
-        padding: 1em .5em;
-
-        &:hover {
-            background-color: to-rgba($secondary-backround-color, .75);
-        }
-
-        span {
-            font-weight: lighter;
-            font-size: small;
-            padding-left: 1em;
-        }
-    }
-
-    .name {
-        padding-left: 1em;
-    }
-
-    .metadata {
-        color: $secondary-backround-color;
-        font-size: smaller;
-        padding-left: 1em;
-    }
-
-    .service-number {
-        color: $secondary-backround-color;
-        font-size: smaller;
-        text-overflow: ellipsis;
-    }
-}
-
 .artist-suggestion {
     span:nth-child(2) {
         padding-left: 1em;
@@ -182,6 +144,75 @@ body {
     text-align: end;    
     justify-self: end;
     margin-right: 1em;
+}
+
+@mixin render-list() {
+    margin: 1em 0 0;
+    @include default-list();
+
+    .title {
+        background-color: $secondary-backround-color;
+        color: $background-color;
+        cursor: pointer;
+        font-weight: bolder;
+        padding: 1em .5em;
+
+        &:hover {
+            background-color: to-rgba($secondary-backround-color, .75);
+        }
+
+        span {
+            font-weight: lighter;
+            font-size: small;
+            padding-left: 1em;
+        }
+    }
+}
+
+.release-render-list {
+    @include render-list();
+
+    .features, .is-explicit, .track-length, .track-number {
+        color: $secondary-backround-color;
+        font-size: smaller;
+    }
+
+    .features, .is-explicit, .track-number {
+        padding-right: .5em;
+    }
+
+    .title {
+        @include default-image();
+
+        img {
+            padding-right: 1em;
+        }
+    }
+
+    .track-title {
+        padding-right: .5em;
+        text-overflow: ellipsis;
+    }
+}
+
+.releases-render-list {
+    @include render-list();
+
+    .name {
+        padding-left: 1em;
+    }
+
+    .metadata {
+        color: $secondary-backround-color;
+        font-size: smaller;
+        padding-left: 1em;
+    }
+
+    .service-number {
+        color: $secondary-backround-color;
+        font-size: smaller;
+        text-overflow: ellipsis;
+    }
 }
 
 .screen-container {

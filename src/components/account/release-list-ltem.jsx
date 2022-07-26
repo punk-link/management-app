@@ -1,19 +1,19 @@
 import React from "react";
 
 function formatServiceNumber() {
-    return "1/1 service available";
+    return "1/1 services";
 }
 
-function formatTrackNumber(tracks) {
-    if (tracks.length === 1)
+function formatTrackNumber(trackNumber) {
+    if (trackNumber === 1)
         return "1 track";
     
-    return tracks.length + " tracks";
+    return `${trackNumber} tracks`;
 }
 
 const ReleaseListItem = ({release}) => {
     let serviceNumber = formatServiceNumber();
-    let trackNumber = formatTrackNumber(release.tracks);
+    let trackNumber = formatTrackNumber(release.trackNumber);
 
     return (
         <div>
