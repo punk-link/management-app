@@ -153,12 +153,10 @@ body {
     @include render-list();
     @include selectable-list();
 
-    .title {
-        cursor: pointer;
-
-        &:hover {
-            background-color: to-rgba($secondary-backround-color, .75);
-        }
+    .distributor-number {
+        color: $secondary-backround-color;
+        font-size: smaller;
+        text-overflow: ellipsis;
     }
 
     .name {
@@ -171,10 +169,12 @@ body {
         padding-left: 1em;
     }
 
-    .service-number {
-        color: $secondary-backround-color;
-        font-size: smaller;
-        text-overflow: ellipsis;
+    .title {
+        cursor: pointer;
+
+        &:hover {
+            background-color: to-rgba($secondary-backround-color, .75);
+        }
     }
 }
 
@@ -194,6 +194,12 @@ body {
     }
 }
 
+.distributors {
+    padding-bottom: 3em;
+    
+    @include render-list();
+}
+
 .logo {
     align-self: end;
     color: $primary-color !important;
@@ -210,6 +216,7 @@ body {
 
 .release {
     @include render-list();
+    padding-bottom: 3em;
 
     .features, .is-explicit, .track-length, .track-number {
         color: $secondary-backround-color;

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function formatServiceNumber() {
-    return "1/1 services";
+function formatDistributorNumber() {
+    return "1/1 distributors";
 }
 
 function formatTrackNumber(trackNumber) {
@@ -13,7 +13,7 @@ function formatTrackNumber(trackNumber) {
 }
 
 const ReleaseSummary = ({release}) => {
-    let serviceNumber = formatServiceNumber();
+    let distributorNumber = formatDistributorNumber();
     let trackNumber = formatTrackNumber(release.trackNumber);
 
     return (
@@ -21,7 +21,7 @@ const ReleaseSummary = ({release}) => {
             <img src={release.imageUrl} alt={release.name} />
             <span className="name">{release.name}</span>
             <span className="metadata">{release.releaseDate}, {trackNumber}</span>
-            <span className="service-number">{serviceNumber}</span>
+            <span className="distributor-number">{distributorNumber}</span>
         </Link>
     );
 }

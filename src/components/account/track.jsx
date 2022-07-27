@@ -1,18 +1,5 @@
 import React from "react";
-
-function padWithLeadingZero(number, targetLength) {
-    return String(number).padStart(targetLength, "0");
-}
-
-function getDurationInMinutesAndSeconds(durationSeconds) {
-    let minutes = Math.floor(durationSeconds / 60);
-    let seconds = durationSeconds % 60;
-
-    let paddedMinutes = padWithLeadingZero(minutes, 2);
-    let paddedSeconds = padWithLeadingZero(seconds, 2);
-
-    return `${paddedMinutes}:${paddedSeconds}`;
-}
+import dateHelper from "../../helpers/date-helpers";
 
 function renderExplicitSign() {
     return (<span className="is-explicit">🄴</span>);
@@ -30,7 +17,7 @@ function renderFeatures(artists) {
 }
 
 const Track = ({track}) => {
-    let duration = getDurationInMinutesAndSeconds(track.durationSeconds);
+    let duration = dateHelper.getDurationInMinutesAndSeconds(track.durationSeconds);
     let explicitSign = track.explicit && renderExplicitSign();
     let features = renderFeatures(track.artists);
 
