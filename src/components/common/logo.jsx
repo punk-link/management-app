@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
     return (
-        <div className="logo width-2">
+        <Link className="logo width-2" to={"/"}>
             punk.link
-        </div>
+        </Link>
     );
 }
 

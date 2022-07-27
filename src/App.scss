@@ -13,11 +13,6 @@ $light-text-color: rgba(0, 0, 0, .50);
     @return rgba($color, $opacity)
 }
 
-@mixin screen-container-positioning {
-    justify-self: center;
-    padding: 3em;
-}
-
 @mixin default-image {
     img {
         height: 2em;
@@ -36,12 +31,48 @@ $light-text-color: rgba(0, 0, 0, .50);
 
             @include default-image();
         }
+    }
+}
 
-        li:hover {
-            background-color: to-rgba($secondary-color);
-            cursor: pointer;
+@mixin selectable-list{
+    @include default-list();
+
+    li:hover {
+        background-color: to-rgba($secondary-color);
+        cursor: pointer;
+    }
+}
+
+@mixin non-highlited-a() {
+    color: inherit;
+    text-decoration: none;
+}
+
+@mixin render-list() {
+    margin: 1em 0 0;
+    @include default-list();
+
+    a {        
+        @include non-highlited-a();
+    }
+
+    .title {
+        background-color: $secondary-backround-color;
+        color: $background-color;
+        font-weight: bolder;
+        padding: 1em .5em;
+
+        span {
+            font-weight: lighter;
+            font-size: small;
+            padding-left: 1em;
         }
     }
+}
+
+@mixin screen-container-positioning {
+    justify-self: center;
+    padding: 3em;
 }
 
 body {
@@ -59,7 +90,7 @@ body {
             border: 1px solid to-rgba($secondary-color);
         }
     
-        @include default-list();
+        @include selectable-list();
     }
 }
 
@@ -118,6 +149,35 @@ body {
     }
 }
 
+.artist {
+    @include render-list();
+    @include selectable-list();
+
+    .title {
+        cursor: pointer;
+
+        &:hover {
+            background-color: to-rgba($secondary-backround-color, .75);
+        }
+    }
+
+    .name {
+        padding-left: 1em;
+    }
+
+    .metadata {
+        color: $secondary-backround-color;
+        font-size: smaller;
+        padding-left: 1em;
+    }
+
+    .service-number {
+        color: $secondary-backround-color;
+        font-size: smaller;
+        text-overflow: ellipsis;
+    }
+}
+
 .artist-suggestion {
     span:nth-child(2) {
         padding-left: 1em;
@@ -136,40 +196,19 @@ body {
 
 .logo {
     align-self: end;
-    color: $primary-color;
+    color: $primary-color !important;
     font-family: 'Inter';
     font-size: 3em;
     font-style: normal;
     font-weight: bold;
-    text-align: end;    
     justify-self: end;
     margin-right: 1em;
+    text-align: end;
+
+    @include non-highlited-a();
 }
 
-@mixin render-list() {
-    margin: 1em 0 0;
-    @include default-list();
-
-    .title {
-        background-color: $secondary-backround-color;
-        color: $background-color;
-        cursor: pointer;
-        font-weight: bolder;
-        padding: 1em .5em;
-
-        &:hover {
-            background-color: to-rgba($secondary-backround-color, .75);
-        }
-
-        span {
-            font-weight: lighter;
-            font-size: small;
-            padding-left: 1em;
-        }
-    }
-}
-
-.release-render-list {
+.release {
     @include render-list();
 
     .features, .is-explicit, .track-length, .track-number {
@@ -191,26 +230,6 @@ body {
 
     .track-title {
         padding-right: .5em;
-        text-overflow: ellipsis;
-    }
-}
-
-.releases-render-list {
-    @include render-list();
-
-    .name {
-        padding-left: 1em;
-    }
-
-    .metadata {
-        color: $secondary-backround-color;
-        font-size: smaller;
-        padding-left: 1em;
-    }
-
-    .service-number {
-        color: $secondary-backround-color;
-        font-size: smaller;
         text-overflow: ellipsis;
     }
 }

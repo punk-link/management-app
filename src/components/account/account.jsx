@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ArtistSuggestion from "./artist-suggestion";
+import { Routes, Route } from "react-router-dom";
 import FilterableDropdown from "../input/filterable-dropdown";
-import ReleaseList from "./release-list";
+import Artist from "./artist";
 import Release from "./release";
 
 let release = {
@@ -789,7 +790,7 @@ function renderArtists(artists) {
             })
         }
 
-        return (<ReleaseList artist={artistWithReleases} key={artistWithReleases.id} />);
+        return (<Artist artist={artistWithReleases} key={artistWithReleases.id} />);
     })
     
     return (
@@ -799,7 +800,7 @@ function renderArtists(artists) {
     );
 }
 
-function renderSearch(suggestionText, setSuggestionText) {
+function renderSearchBar(suggestionText, setSuggestionText) {
     let suggestions = getArtistSuggestions(artistSuggestions, suggestionText);
 
     return(
@@ -819,15 +820,20 @@ const Account = () => {
     const [suggestionText, setSuggestionText] = useState("");
 
     let hasNoData = artists === undefined || artists.length === 0;
-    
+    let searchBar = renderSearchBar(suggestionText, setSuggestionText);
+    let artists1 = renderArtists(artists);
 
     return (
-        <div className="account width-4">
-            {hasNoData && renderEmptyPrompt()}
-            {renderSearch(suggestionText, setSuggestionText)}
-            {renderArtists(artists)}
-            <Release release={release} />
-        </div>
+        <Routes>
+            <Route path="/" element={
+                <div className="account width-4">
+                    {hasNoData && renderEmptyPrompt()}
+                    {searchBar}
+                    {artists1}
+                </div>
+            } />
+            <Route path="/releases/:releaseId" element={<Release release={release} />} />
+        </Routes>
     );
 }
 

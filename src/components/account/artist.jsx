@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReleaseListItem from "./release-list-ltem";
+import ReleaseSummary from "./release-summary";
 
 function formatReleaseNumber(releases) {
     if (releases.length === 1) 
@@ -8,32 +8,32 @@ function formatReleaseNumber(releases) {
     return `${releases.length} releases`;
 }
 
-function renderReleases(artistReleases) {
-    let releases = artistReleases.map((release) => {
+function renderReleaseSummaries(artistReleases) {
+    let summaries = artistReleases.map((release) => {
         return (
             <li key={release.id}>
-                <ReleaseListItem release={release} />
+                <ReleaseSummary release={release} />
             </li>
         );
     });
 
-    return (<ul>{releases}</ul>);
+    return (<ul>{summaries}</ul>);
 }
 
-const ReleaseList = ({artist}) => {
+const Artist = ({artist}) => {
     const [isUnfold, setFoldState] = useState(false);
 
     let releaseNumber = formatReleaseNumber(artist.releases);
-    let releases = isUnfold && renderReleases(artist.releases);
+    let releaseSummaries = isUnfold && renderReleaseSummaries(artist.releases);
 
     return (
-        <div className="releases-render-list shadowed">
+        <div className="artist shadowed">
             <div className="title" onClick={(e) => setFoldState(!isUnfold)}>
                 {artist.name}<span>{releaseNumber}</span>
             </div>
-            {releases}
+            {releaseSummaries}
         </div>
     );
 }
 
-export default ReleaseList;
+export default Artist;

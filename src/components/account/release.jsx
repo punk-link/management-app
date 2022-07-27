@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Track from "./track";
 
 function renderTracks(releaseTracks) {
@@ -14,12 +14,11 @@ function renderTracks(releaseTracks) {
 }
 
 const Release = ({release}) => {
-    const [isUnfold, setFoldState] = useState(false);
-    let tracks = isUnfold && renderTracks(release.tracks);
+    let tracks = renderTracks(release.tracks);
 
     return (
-        <div className="release-render-list shadowed">
-            <div className="title" onClick={(e) => setFoldState(!isUnfold)}>
+        <div className="release shadowed">
+            <div className="title">
                 <img src={release.images[2].Url} alt={release.name} />
                 {release.name}<span>{release.releaseDate}</span>
             </div>
