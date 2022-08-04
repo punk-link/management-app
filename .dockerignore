@@ -1,0 +1,12 @@
+/.git
+/.vscode
+/node_modules
+
+.dockerignore
+.env
+.gitignore
+app.env
+Dockerfile*
+README.md
+LICENSE
+npm-debug.log
