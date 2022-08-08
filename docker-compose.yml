@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  management-app:
+    build: .
+    ports: 
+      - 3000:80
+    image: registry.punk.link/management-app:latest
