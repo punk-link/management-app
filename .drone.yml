@@ -1,9 +1,34 @@
-name: drone-test
 kind: pipeline
 type: docker
+name: Build
 
-steps:
-- name: test
-  image: alpine
-  commands:
-  - echo "It worked!"
+trigger:
+  branch:
+    - master
+  event:
+    include:
+      - push
+
+- name: Build docker image & push to repository
+  image: plugins/docker
+  environment:
+    DOCKER_BUILDKIT: 1
+    GITHUB_TOKEN:
+      from_secret: GITHUB_TOKEN
+    BUILD_VERSION: ${DRONE_COMMIT_SHA:0:7}
+  settings:
+    registry: registry.punk.link
+    repo: registry.punk.link/management-app
+    tags:
+      - ${DRONE_COMMIT_SHA:0:7}
+      - ${DRONE_COMMIT_BRANCH}
+    force_tag: true
+    use_cache: true
+    username:
+      from_secret: DOCKER_LOGIN
+    password:
+      from_secret: DOCKER_PASSWORD
+    build_args_from_env:
+      - GITHUB_TOKEN
+      - BUILD_VERSION
+      
