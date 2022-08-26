@@ -31,6 +31,23 @@ steps:
     build_args_from_env:
       - GITHUB_TOKEN
       - BUILD_VERSION
+
+- name: Deploy to DEV
+  image: pelotech/drone-helm3
+  settings:
+    mode: upgrade
+    chart: ./Helm/
+    release: app-dev
+    values_files: ["Helm/values_dev.yaml"]
+    namespace: dev
+    skip_tls_verify: true
+    wait_for_upgrade: true
+    values: image.tag=${DRONE_COMMIT_SHA:0:7}
+  environment:
+    KUBE_API_SERVER:
+      from_secret: KUBERNETES_DEV_API
+    KUBE_TOKEN:
+      from_secret: KUBERNETES_DEV_TOKEN      
       
 - name: send telegram notification
   image: appleboy/drone-telegram
