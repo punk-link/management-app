@@ -52,7 +52,7 @@ ingress:
         - path: /
           pathType: Prefix
   tls:
-   - secretName: app-tls
+   - secretName: app-prod-tls
      hosts:
        - app.punk.link
 
