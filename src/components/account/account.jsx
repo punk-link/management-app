@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ArtistSuggestion from "./artist-suggestion";
 import { Routes, Route } from "react-router-dom";
+import ArtistSuggestion from "./artist-suggestion";
 import FilterableDropdown from "../input/filterable-dropdown";
 import Artist from "./artist";
 import Release from "./release";
@@ -825,7 +825,7 @@ const Account = () => {
 
     return (
         <Routes>
-            <Route path="/" element={
+            <Route path="/x" element={
                 <div className="account width-4">
                     {hasNoData && renderEmptyPrompt()}
                     {searchBar}

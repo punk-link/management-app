@@ -4,6 +4,10 @@ import Grid from './components/common/grid'
 import Header from './components/header/header';
 import { Routes, Route } from "react-router-dom";
 import ScreenContainer from './components/common/screen-container';
+import Login from './components/login/login';
+import SignUp from './components/signup/sign-up';
+import routes from './constants/routes';
+
 //import SecondaryScreenContainer from './components/common/secondary-screen-container';
 
 function App() {
@@ -12,8 +16,9 @@ function App() {
             <Header />
             <ScreenContainer>
                 <Routes>
-                    <Route path='/*' element={<Account />} />
-                    <Route path='*' element={
+                    <Route path={routes.login} element={<Login />} />
+                    <Route path={routes.signUp} element={< SignUp/>} />
+                    <Route path={routes.notFound} element={
                         <div>There's nothing here!</div>
                     }/>
                 </Routes>
