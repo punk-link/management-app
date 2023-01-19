@@ -4,45 +4,29 @@ import { Link, Routes, Route } from "react-router-dom";
 import routes from "../../constants/routes";
 import * as yup from 'yup';
 
+
 const validationSchema = yup.object().shape({
     email: yup.string().required('Required').email('Invalid email address'),
     password: yup.string().required('Required')
 });
+
+
 const Login = () => {
     return (
         <Routes>
             <Route path={routes.login} element={
                 <div className="login">
                     <Formik
-                    validationSchema={validationSchema}
+                        validationSchema={validationSchema}
                         initialValues={{
-                         email: '',
-                         password: ''
+                            email: '',
+                            password: ''
                         }}
                         onSubmit = {values=> {
                             console.log('submit',values);
                         }}
-                        // validate={values => {
-                        //     let errors = {};
-
-                        //     if (!values.email) 
-                        //         errors.email = 'Requeired';
-                        //     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email))
-                        //         errors.email = 'Invalid email address';
-
-                        //     if (!values.password)
-                        //         errors.password = 'Requeired';
-
-                        //     return errors;
-                        // }}
-                        // onSubmit={(values, {setSubmitting}) => {
-                        //     setTimeout(() => {
-                        //         alert(JSON.stringify(values, null));
-                        //         setSubmitting(false);
-                        //     }, 400);
-                        // }}
-                
                     >
+
                         {({ isSubmitting }) => (
                             <Form>
                                 <Field type="email" name="email" />
