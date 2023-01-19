@@ -6,7 +6,7 @@ import * as yup from 'yup';
 
 const validationSchema = yup.object().shape({
     email: yup.string().required('Required').email('Invalid email address'),
-    password: yup.string().string().required('Required')
+    password: yup.string().required('Required')
 });
 const Login = () => {
     return (
@@ -41,7 +41,7 @@ const Login = () => {
                         //         setSubmitting(false);
                         //     }, 400);
                         // }}
-
+                
                     >
                         {({ isSubmitting }) => (
                             <Form>
