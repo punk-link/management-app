@@ -2,6 +2,13 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import routes from "../../constants/routes";
+import * as yup from 'yup';
+
+
+const validationSchema = yup.object().shape({
+    email: yup.string().required('Required').email('Invalid email address'),
+    password: yup.string().required('Required')
+});
 
 const SignUp = () => {
     return (
@@ -9,25 +16,14 @@ const SignUp = () => {
             <Route path={routes.login} element={
                 <div className="sign-up">
                     <Formik
-                        initialValues={{ email: '', password: ''}}
-                        validate={values => {
-                            let errors = {};
-
-                            if (!values.email) 
-                                errors.email = 'Requeired';
-                            else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email))
-                                errors.email = 'Invalid email address';
-
-                            if (!values.password)
-                                errors.password = 'Requeired';
-
-                            return errors;
+                        validationSchema={validationSchema}
+                        initialValues={{ 
+                            email: '',
+                            password: ''
                         }}
-                        onSubmit={(values, {setSubmitting}) => {
-                            setTimeout(() => {
-                                alert(JSON.stringify(values, null));
-                                setSubmitting(false);
-                            }, 400);
+               
+                        onSubmit = {values=> {
+                            console.log('submit',values);
                         }}
                     >
                         {({ isSubmitting }) => (
