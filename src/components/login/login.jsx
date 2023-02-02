@@ -11,7 +11,8 @@ const validationSchema = yup.object().shape({
 });
 
 
-const Login = () => {
+const Login = (data) => {
+    console.log(data);
     return (
         <Routes>
             <Route path={routes.login} element={
