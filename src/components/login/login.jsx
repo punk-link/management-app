@@ -10,9 +10,7 @@ const validationSchema = yup.object().shape({
     password: yup.string().required('Required')
 });
 
-
-const Login = (data) => {
-    console.log(data);
+const Login = () => {
     return (
         <Routes>
             <Route path={routes.login} element={
