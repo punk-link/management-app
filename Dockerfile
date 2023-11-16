@@ -1,4 +1,4 @@
-FROM node:18-alpine AS builder
+FROM node:21-alpine AS builder
 RUN apk update && \
     apk add --no-cache git
 WORKDIR /usr/src/app
@@ -7,7 +7,7 @@ RUN npm install
 COPY . . 
 RUN npm run build
 
-FROM nginx:1.23.1-alpine
+FROM nginx:1.25.3-alpine
 RUN apk update && \
     apk add --no-cache curl
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
